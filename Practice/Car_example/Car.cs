@@ -5,9 +5,9 @@
     public int mileage;
     public bool lights = false;
 
-    public Car(){
+    //public Car(){
 
-    }
+    //}
 
     public void displayInfo(){
         Console.WriteLine($"Brand: {brand}, year: {year}, mileage: {mileage}, lights: {lights}.");
