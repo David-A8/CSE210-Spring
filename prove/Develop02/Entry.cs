@@ -1,19 +1,23 @@
 public class Entry
 {
-    public string Prompt()
+    private Prompt _prompt;
+    private string _response = "";
+    private DateTime _date;
+
+    public Entry(DateTime date, Prompt question, string response = "")
     {
-        return "question";
+        _date = date;
+        _prompt = question;
+        _response = response;
     }
 
-    public int Date()
+
+    public string GetEntry()
     {
-        return 0000;
+        return $"{_date.ToString("M/d/yyy")}\n{_prompt.Display()}\n{_response}";
     }
 
-    public string text()
-    {
-        return "Enter text";
-    }
+
 
 
 
