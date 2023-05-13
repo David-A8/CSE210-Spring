@@ -11,13 +11,6 @@ public class Prompt
     {
         _question = _prompts[random.Next(0,_prompts.Count)];
     }
-     
-
-    public string AddPrompt()
-    {
-        _prompts.Add(_question);
-        return _question;
-    }
 
     public string Display()
     {

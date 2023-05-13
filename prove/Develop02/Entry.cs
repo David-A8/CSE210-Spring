@@ -1,7 +1,7 @@
 public class Entry
 {
-    private Prompt _prompt;
-    private string _response = "";
+    public Prompt _prompt;
+    public string _response = "";
     private DateTime _date;
 
     public Entry(DateTime date, Prompt question, string response = "")
