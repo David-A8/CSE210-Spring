@@ -17,6 +17,11 @@ public class Entry
         return $"{_date.ToString("M/d/yyy")}\n{_prompt.Display()}\n{_response}";
     }
 
+        public string GetText()
+    {
+        return $"{_date.ToString("M/d/yyy")}~~{_prompt.Display()}~~{_response}";
+    }
+
 
 
 

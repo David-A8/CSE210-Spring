@@ -12,9 +12,10 @@ public class Journal
 
     public void CreateText()
     {
+        _fileText = "";
          foreach (Entry entry in _entries)
         {
-            _fileText = _fileText + entry.GetEntry() + $"\n---------------------------------------------------------------\n";
+            _fileText = _fileText + entry.GetText() + $"\n";
         }
     }
     public string DisplayFile()
