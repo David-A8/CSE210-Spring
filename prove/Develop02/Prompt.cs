@@ -8,9 +8,16 @@ public class Prompt
     Random random = new Random();
 
     // A new Prompt is created - it contains a random question from the list.
-    public Prompt()
+    public Prompt(string question = "")
     {
+        if (question == "")
+        {
         _question = _prompts[random.Next(0,_prompts.Count)];
+        }
+        else
+        {
+            _question = question;
+        }
     }
 
     // Method to display a prompt.
