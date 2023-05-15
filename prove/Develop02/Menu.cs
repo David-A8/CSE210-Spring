@@ -36,6 +36,7 @@ public class Menu
                     Console.WriteLine(_tempQuestion.Display());
                     string answer = Console.ReadLine();
                     _journal.AddEntries(new Entry(DateTime.Now,_tempQuestion,answer));
+                    Console.WriteLine("Entry added successfully!");
                     break;
                 // This option will display all the entries in a journal.
                 case "2":
@@ -44,16 +45,17 @@ public class Menu
                 // Option to open a journal from a txt file.
                 case "3":
                     Console.WriteLine("What is the filename? ");
-                    string textFile = Console.ReadLine();
+                    string textFile = Console.ReadLine() ?? string.Empty;
                     _files = new SaveLoad();
                     _files.Load(textFile);
                     break;
                 // This option will ask for a filename and save the journal as a txt file.
                 case "4":
                     Console.WriteLine("What is the filename? ");
-                    string fileName = Console.ReadLine();
+                    string fileName = Console.ReadLine() ?? string.Empty;
                     _files = new SaveLoad();
                     _files.Save(fileName, _journal);
+                    Console.WriteLine("File saved successfully");
                     break;
             }
             response = "";
