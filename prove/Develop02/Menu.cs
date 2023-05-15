@@ -35,7 +35,8 @@ public class Menu
                     _tempQuestion = new Prompt();
                     Console.WriteLine(_tempQuestion.Display());
                     string answer = Console.ReadLine();
-                    _journal.AddEntries(new Entry(DateTime.Now,_tempQuestion,answer));
+                    DateTime todayDate = DateTime.Now;
+                    _journal.AddEntries(new Entry(todayDate.ToShortDateString(),_tempQuestion,answer));
                     Console.WriteLine("Entry added successfully!");
                     break;
                 // This option will display all the entries in a journal.

@@ -25,7 +25,7 @@ public class SaveLoad
         {
             string[] parts = lines[i].Split("~~");
             //DateTime date = DateTime.ParseExact(parts[0], ("M/d/yyyy"), CultureInfo.CurrentCulture);
-            newJournal.AddEntries(new Entry(DateTime.Now, new Prompt(parts[1]), parts[2]));
+            newJournal.AddEntries(new Entry(parts[0], new Prompt(parts[1]), parts[2]));
         }
         newMenu.Display();
     }
