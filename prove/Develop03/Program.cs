@@ -1,9 +1,2 @@
-using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Develop03 World!");
-    }
-}
+Reference reference1 = new Reference("Moroni", 10, 25);
+reference1.Display();
