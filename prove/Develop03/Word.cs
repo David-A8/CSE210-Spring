@@ -4,7 +4,7 @@ public class Word
     Boolean _isHidden;
     string _hiddenword;
 
-    public Word(string word, Boolean hidden)
+    public Word(string word, Boolean hidden = false)
     {
         _word = word;
         _isHidden = hidden;
@@ -22,5 +22,10 @@ public class Word
     public void ShowWord(string word)
     {
         _isHidden = false;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine(_word);
     }
 }
