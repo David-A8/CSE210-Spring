@@ -2,6 +2,7 @@ public class Menu
 {
     public void Display()
     {
+        // Displaying first menu. The user decides if they want to use their own scripture or the generic one.
         string response = "";
         string[] options = {"1","2","3"};
         Scripture Scripture;
@@ -14,7 +15,7 @@ public class Menu
             case "3":
                 Environment.Exit(0);
                 break;
-            // This option will add a new entry to the journal.
+            // This option will ask for the passage and reference.
             case "1":
                 Console.Clear();
                 Console.WriteLine("Enter Book: ");
@@ -29,7 +30,7 @@ public class Menu
                 Scripture.Display();
                 Scripture.RandomHide();
                 break;
-            // This option will display all the entries in a journal.
+            // This option will display the scripture stores in the program.
             case "2":
                 Scripture = new Scripture("And if men come unto me I will show unto them their weakness.\n" +
                 "I give unto men weakness that they may be humble; and my grace is sufficient for all men that humble themselves before me;\n" +
