@@ -14,18 +14,29 @@ public class Word
         }
     }
 
-    public void HideWord(string word)
+    public void HideWord()
     {
         _isHidden = true;
     }
 
-    public void ShowWord(string word)
+    public void ShowWord()
     {
         _isHidden = false;
     }
 
+    public Boolean Verify()
+    {
+        return _isHidden;
+    }
     public void Display()
     {
-        Console.WriteLine(_word);
+        if (_isHidden == false)
+        {
+            Console.Write((_word) + " ");
+        }
+        else
+        {
+            Console.Write((_hiddenword) + " ");
+        }
     }
 }
