@@ -23,7 +23,7 @@ public class Listing : StartingEnding
             GetResponses();
             currentTime = DateTime.Now;
         }
-        Console.WriteLine($"You listed {_responses.Count} items!");
+        Console.WriteLine($"\nYou listed {_responses.Count} items!");
     }
 
     public void GetResponses()
