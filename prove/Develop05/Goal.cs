@@ -1,27 +1,44 @@
-public abstract class Goal
+using System.IO;
+public class Goal
 {
     protected string _name;
     protected string _description;
     protected int _points;
     private bool _completed = false;
 
-    public void GetName(string name)
+    public void GetName()
     {
-        _name = name;
+        Console.Write($"\nWhat is the name of your goal?: ");
+        _name = Console.ReadLine() ?? String.Empty;
     }
 
-    public void GetDescription(string description)
+    public void GetDescription()
     {
-        _description = description;
+        Console.Write($"\nWhat is the description of your goal?: ");
+        _description = Console.ReadLine() ?? String.Empty;
     }
 
-    public void GetPoints(int points)
+    public virtual void GetPoints()
     {
-        _points = points;
+        Console.Write($"\nWhat is the amoung of points associated with this goal?: ");
+        _points = int.Parse(Console.ReadLine() ?? String.Empty);
     }
 
     public void Display()
     {
-        Console.WriteLine($"{_name} ({_description})");
+        if (_completed == false)
+        {
+            Console.WriteLine($"{_name} ({_description}) [ ]");
+        }
+        else
+        {
+            Console.WriteLine($"{_name} ({_description}) [X]");
+        }
+        
+    }
+
+    public virtual void MarkComplete()
+    {
+        _completed = true;
     }
 }

@@ -14,5 +14,17 @@ public class Goals
         {
             _goals[i].Display();
         }
+        Console.WriteLine("\nPress Enter to continue");
+        Console.ReadLine();
+    }
+
+    public void WriteFile()
+    {
+        
+    }
+
+    public Goal LastGoal()
+    {
+        return _goals[_goals.Count-1];
     }
 }
