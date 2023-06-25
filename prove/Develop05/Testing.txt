@@ -1,4 +1,0 @@
-1055:Simple:Simple goal 1:Testing Simple goals:50:True
-1055:Eternal:Eternal goal 1:Eternal goal test:80:False
-1055:Checklist:Checklist goal test 1:Test for checklist goal:100:True:0:500
-1055:Simple:Normal goal:Trying more goals:75:True
