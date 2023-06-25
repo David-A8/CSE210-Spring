@@ -1,10 +1,10 @@
 using System.IO;
-public class Goal
+public abstract class Goal
 {
     protected string _name;
     protected string _description;
     protected int _points;
-    private bool _completed = false;
+    protected bool _completed = false;
 
     public void GetName()
     {
@@ -28,17 +28,47 @@ public class Goal
     {
         if (_completed == false)
         {
-            Console.WriteLine($"{_name} ({_description}) [ ]");
+            Console.Write($"{_name} ({_description}) [ ]");
         }
         else
         {
-            Console.WriteLine($"{_name} ({_description}) [X]");
+            Console.Write($"{_name} ({_description}) [X]");
         }
-        
     }
 
-    public virtual void MarkComplete()
+    public string ReturnName()
     {
-        _completed = true;
+        return _name;
+    }
+
+    public virtual int MarkComplete()
+    {
+        if (_completed == false)
+        {
+            _completed = true;
+            Console.WriteLine($"Congrats!! You have earned {_points} points");
+            return _points;
+        }
+        else
+        {
+            Console.WriteLine("This goal was already marked as completed");
+            return 0;
+        }
+    }
+
+    public abstract string GetStringRepresentation();
+    public virtual void LoadingData(string[] Data)
+    {
+        _name = Data[1];
+        _description = Data[2];
+        _points = int.Parse(Data[3]);
+        if (Data[4]== "true")
+        {
+            _completed = true;
+        }
+        else
+        {
+            _completed = false;
+        }
     }
 }

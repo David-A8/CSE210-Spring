@@ -1,7 +1,7 @@
 public class SimpleGoal : Goal
 {
-    public override void MarkComplete()
+    public override string GetStringRepresentation()
     {
-        base.MarkComplete();
+        return "Simple:"+_name + ":" + _description + ":" + _points + ":" + _completed;
     }
 }

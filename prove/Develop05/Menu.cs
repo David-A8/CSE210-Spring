@@ -5,6 +5,7 @@ public class Menu
         string response = "";
         string[] options = {"1","2","3","4","5","6"};
         Goals goals = new Goals();
+        string FileName = "";
         while (response!="6")
         {
             while(options.Contains(response)==false)
@@ -14,7 +15,7 @@ public class Menu
                 Console.Write("\n   1. Create New Goal" +
                 "\n   2. List Goals\n   3. Save Goals" +
                 "\n   4. Load Goals\n   5. Record Event" +
-                "\n   6. Quit \nSelect a choice from the menu: ");
+                "\n   6. Quit \n\nSelect a choice from the menu: ");
                 response = Console.ReadLine() ?? String.Empty;
             }
 
@@ -55,10 +56,19 @@ public class Menu
                     goals.DisplayGoals();
                     break;
                 case "3":
+                    Console.Write($"\nWhat is the name for the file?: ");
+                    FileName = Console.ReadLine() ?? String.Empty;
+                    goals.SaveFile(FileName);
                     break;
                 case "4":
+                    Console.Write($"\nWhat is the name for the file?: ");
+                    FileName = Console.ReadLine() ?? String.Empty;
+                    goals.LoadFile(FileName);
                     break;
                 case "5":
+                    Console.Clear();
+                    Console.WriteLine("The goals are: ");
+                    
                     break;
             }
             response = "";
