@@ -36,9 +36,9 @@ public abstract class Goal
         }
     }
 
-    public string ReturnName()
+    public void ReturnName()
     {
-        return _name;
+        Console.Write ($"{_name}\n");
     }
 
     public virtual int MarkComplete()
@@ -59,10 +59,10 @@ public abstract class Goal
     public abstract string GetStringRepresentation();
     public virtual void LoadingData(string[] Data)
     {
-        _name = Data[1];
-        _description = Data[2];
-        _points = int.Parse(Data[3]);
-        if (Data[4]== "true")
+        _name = Data[2];
+        _description = Data[3];
+        _points = int.Parse(Data[4]);
+        if (Data[5]== "True")
         {
             _completed = true;
         }

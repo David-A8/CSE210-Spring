@@ -28,7 +28,7 @@ public class Goals
         {
             for (int i = 0; i < _goals.Count; i++)
             {
-                outputFile.WriteLine(_goals[i].GetStringRepresentation());
+                outputFile.WriteLine($"{_totalPoints}:{_goals[i].GetStringRepresentation()}");
             }
         }
         Console.WriteLine("File created successfully!!!");
@@ -42,12 +42,13 @@ public class Goals
         foreach (string line in lines)
         {
             string[] parts = line.Split(":");
-            if (parts[0] == "Checklist")
+            _totalPoints = int.Parse(parts[0]);
+            if (parts[1] == "Checklist")
             {
                 _goals.Add(new ChecklistGoal());
                 _goals[_goals.Count - 1].LoadingData(parts);
             }
-            else if (parts[0] == "Eternal")
+            else if (parts[1] == "Eternal")
             {
                 _goals.Add(new EternalGoal());
                 _goals[_goals.Count - 1].LoadingData(parts);
@@ -68,12 +69,19 @@ public class Goals
         Console.WriteLine("The goals are: ");
         for (int i = 0; i < _goals.Count; i++)
         {
-            Console.Write($"\n  {i+1}. ");
+            Console.Write($"  {i+1}. ");
             _goals[i].ReturnName();
         }
-        Console.Write("\n\nWhich goal did you accomplish?: ");
+        Console.Write("\nWhich goal did you accomplish?: ");
         int GoalComplete = int.Parse(Console.ReadLine() ?? String.Empty);
         _totalPoints += _goals[GoalComplete-1].MarkComplete();
+        Console.WriteLine($"You have now {_totalPoints} points.");
+        Thread.Sleep(3000);
+    }
+
+    public int DisplayPoints()
+    {
+        return _totalPoints;
     }
 
     public Goal LastGoal()

@@ -20,12 +20,32 @@ public class ChecklistGoal : Goal
     public override void LoadingData(string[] Data)
     {
         base.LoadingData(Data);
-        _timesToComplete = int.Parse(Data[5]);
-        _extraPoints = int.Parse(Data[6]);
+        _timesToComplete = int.Parse(Data[6]);
+        _extraPoints = int.Parse(Data[7]);
     }
 
     public override int MarkComplete()
     {
-        return base.MarkComplete();
+        if (_completed == false)
+        {
+            _timesToComplete -= 1;
+            if (_timesToComplete == 0)
+            {
+                _completed = true;
+                Console.WriteLine("Congrats!! You finished your Checklist Goal");
+                Console.WriteLine($"You have earned {_points + _extraPoints} points");
+                return _points + _extraPoints;
+            }
+            else
+            {
+                Console.WriteLine($"Congrasts!! You have earned {_points} points.");
+                return _points;
+            }
+        }
+        else
+        {
+            Console.WriteLine("This goal was already marked as completed.");
+            return 0;
+        }
     }
 }

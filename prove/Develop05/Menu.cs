@@ -11,8 +11,9 @@ public class Menu
             while(options.Contains(response)==false)
             {
                 Console.Clear();
-                Console.Write("Menu options:");
-                Console.Write("\n   1. Create New Goal" +
+                Console.WriteLine($"You have {goals.DisplayPoints()} points.");
+                Console.WriteLine("\nMenu options:");
+                Console.Write("   1. Create New Goal" +
                 "\n   2. List Goals\n   3. Save Goals" +
                 "\n   4. Load Goals\n   5. Record Event" +
                 "\n   6. Quit \n\nSelect a choice from the menu: ");
@@ -66,9 +67,7 @@ public class Menu
                     goals.LoadFile(FileName);
                     break;
                 case "5":
-                    Console.Clear();
-                    Console.WriteLine("The goals are: ");
-                    
+                    goals.MarkComplete();
                     break;
             }
             response = "";
