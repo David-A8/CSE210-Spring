@@ -27,7 +27,7 @@ public class Menu
                     {
                         Console.Clear();
                         Console.WriteLine("Sign In");
-                        Console.Write($"\n  Username: ");
+                        Console.Write($"\n  Username (First and Last Name): ");
                         string userName = Console.ReadLine() ?? string.Empty;
                         Console.Write($"  Password: ");
                         string password = Console.ReadLine() ?? string.Empty;
