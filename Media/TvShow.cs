@@ -4,6 +4,14 @@ public class TvShow : Media
     string _rate = "";
     string _platform = "";
 
+    public override void NewMedia()
+    {
+        Console.WriteLine("New TvShow");
+        base.NewMedia();
+        Console.Write($"\nNumber of seasons: ");
+        _seasons = int.Parse(Console.ReadLine() ?? string.Empty);
+        Console.WriteLine("\nTv show created successfully");
+    }
     public override string GetTxtInfo()
     {
         return "TvShow:/"+_title+":/"+_genre+":/"+ _year+":/"+_calification+":/"+_numberRatings+":/"+_seasons+":/"+_rate+":/"+_platform;

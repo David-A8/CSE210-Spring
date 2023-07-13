@@ -1,5 +1,7 @@
 public class Menu
 {
+    public User person1 = new User();
+
     public void Display()
     {
         string response = "";
@@ -25,37 +27,11 @@ public class Menu
                     Boolean verified = false;
                     while (verified == false)
                     {
-                        Console.Clear();
-                        Console.WriteLine("Sign In");
-                        Console.Write($"\n  Username (First and Last Name): ");
-                        string userName = Console.ReadLine() ?? string.Empty;
-                        Console.Write($"  Password: ");
-                        string password = Console.ReadLine() ?? string.Empty;
-                        string[] lines = System.IO.File.ReadAllLines("Users.txt");
-                        foreach (string line in lines)
-                        {
-                            string[] parts = line.Split(":/");
-                            string userFile = parts[0] + " " + parts[1];
-                            string passwordFile = parts[2];
-                            if (userFile == userName && passwordFile == password)
-                            {
-                                Console.WriteLine($"\nWelcome {userName}!!!");
-                                verified = true;
-                                Thread.Sleep(2500);
-                                MainMenu menu1 = new MainMenu();
-                                menu1.Display();
-                                break;
-                            }
-                        }
-                        if (verified == false)
-                        {
-                            Console.WriteLine("Username or Password invalid... Try again");
-                            Thread.Sleep(2500);
-                        }
+                        verified = person1.SignIn(person1);
                     }
                     break;
+
                 case "2":
-                    User person1 = new User();
                     person1.NewUser();
                     break;
             }

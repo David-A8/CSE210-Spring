@@ -3,6 +3,15 @@ public class Music : Media
     string _artist = "";
     string _album = "";
 
+    public override void NewMedia()
+    {
+        Console.WriteLine("New Song");
+        base.NewMedia();
+        Console.Write($"\nArtist: ");
+        _artist = Console.ReadLine() ?? string.Empty;
+        Console.Write($"\nAlbum: ");
+        _album = Console.ReadLine() ?? string.Empty;
+    }
     public override string GetTxtInfo()
     {
         return "Music:/" + _title +":/" + _genre +":/" + _year +":/" + _calification +":/" + _numberRatings + ":/" + _artist +":/"+ _album;
