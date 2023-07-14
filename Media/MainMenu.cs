@@ -34,8 +34,8 @@ public class MainMenu
                 case "2":
                     collection.DisplaySuggestions();
                     Console.Write($"\nType number of the suggestion you wanna respond to: ");
-                    Console.ReadLine();
-
+                    string respond = Console.ReadLine() ?? string.Empty;
+                    collection.AddResponse(int.Parse(respond));
                     break;
             }
         response = "";

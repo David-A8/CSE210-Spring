@@ -7,6 +7,22 @@ public class Suggestion
     string _userName = "";
     List<Media> _responses = new List<Media>();
 
+    // Method to add the responses given by users to the responses list.
+    public void AddResponse(Media newMedia)
+    {
+        _responses.Add(newMedia);
+    }
+
+    public void ShowResponses()
+    {
+        Console.WriteLine("\nResponses:");
+        for (int i = 0; i < _responses.Count; i++)
+            {
+                _responses[i].ShowInfo();
+                Console.WriteLine($"----------------------------------------------------------------------\n");
+            }
+    }
+
     public void NewSuggestion(User Person)
     {
         Console.Clear();
@@ -32,7 +48,7 @@ public class Suggestion
             else if (choice == "3"){
                 Console.Clear();
                 Console.WriteLine("Suggestion for TV Shows");
-                _type = "Tv Show";
+                _type = "TvShow";
                 loop = false;
             }
             else{
@@ -56,12 +72,16 @@ public class Suggestion
         Console.WriteLine($"\nGenre: {_genre}");
         Console.WriteLine($"Comment: {_description}");
         Console.WriteLine(_userName +" - " + _date);
-        Console.WriteLine($"----------------------------------------------------------------------\n");
     }
 
     public string GetTxtInfo()
     {
         return _type+":/"+_genre+":/"+ _description+":/"+_date+":/"+_userName;
+    }
+
+    public string Type()
+    {
+        return _type;
     }
 
     public void LoadingData(string[] Data)

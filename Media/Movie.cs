@@ -5,6 +5,7 @@ public class Movie : Media
 
     public override void NewMedia()
     {
+        _type = "Movie";
         Console.WriteLine("New movie");
         base.NewMedia();
         Console.Write($"\nDirector: ");
@@ -19,5 +20,13 @@ public class Movie : Media
         base.LoadingData(Data);
         _director = Data[6];
         _rate = Data[7];
+    }
+
+    public override void ShowInfo()
+    {
+        base.ShowInfo();
+        Console.WriteLine($"Director: {_director}");
+        Console.WriteLine($"Rate: {_rate}");
+        Console.WriteLine($"Calification: {_calification}");
     }
 }

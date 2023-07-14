@@ -5,6 +5,7 @@ public class Music : Media
 
     public override void NewMedia()
     {
+        _type = "Music";
         Console.WriteLine("New Song");
         base.NewMedia();
         Console.Write($"\nArtist: ");
@@ -21,5 +22,13 @@ public class Music : Media
         base.LoadingData(Data);
         _artist = Data[6];
         _album = Data[7];
+    }
+
+    public override void ShowInfo()
+    {
+        base.ShowInfo();
+        Console.WriteLine($"Artist: {_artist}");
+        Console.WriteLine($"Album: {_album}");
+        Console.WriteLine($"Calification: {_calification}");
     }
 }
