@@ -14,7 +14,7 @@ public class Response
         Boolean Found = false;
         string Type = sugg.Type();
         Console.WriteLine($"\n\nNew suggestion");
-        // First, the program will verify if the Media is already in the Data base.
+        // First, the program will verify if the Media is already in the List of Media.
         Console.Write($"\nEnter details of {Type}\n\nEnter title: ");
         string Title = Console.ReadLine() ?? string.Empty;
         Console.Write($"\nYear of release: ");
@@ -56,7 +56,6 @@ public class Response
         }
         //After the media was found or created. The rest of the fields for the suggestion are filled.
         DateTime todayDate = DateTime.Now;
-        Console.WriteLine("New entry added. Thank you for your response!!");
         Console.WriteLine($"\nAdd a comment to your suggestion:");
         _comment = Console.ReadLine() ?? string.Empty;
         _date = todayDate.ToShortDateString();
@@ -64,10 +63,6 @@ public class Response
         Console.WriteLine("Thank you for your suggestion!!!");
         Thread.Sleep(2500);
         Console.Clear();
-        sugg.Display();
-        sugg.ShowResponses();
-        Console.WriteLine($"\nPress enter to continue");
-        Console.ReadLine();
     }
 
     public void DisplayResponse()
@@ -75,5 +70,34 @@ public class Response
         _media.ShowInfo();
         Console.WriteLine($"Comment: {_comment}");
         Console.WriteLine(_userName +" - " + _date);
+    }
+
+    public string GetTxtInfo()
+    {
+        return _code+":/"+_media.Type()+":/"+ _media.Title()+":/"+_media.Year()+":/"+_comment+":/"+_userName+":/"+_date;
+    }
+
+    public int GetCode()
+    {
+        return _code;
+    }
+
+    public void LoadingData(string[] Data, List<Media> Media)
+    {
+        _code = int.Parse(Data[0]);
+        for (int i = 0; i < Media.Count; i++)
+        {
+            if (Media[i].Type() == Data[1]){
+                if (Media[i].Title().ToUpper() == Data[2].ToUpper()){
+                    // If media is found, it will be displayed.
+                    if (Media[i].Year() == int.Parse(Data[3])){
+                        _media = Media[i];
+                    }
+                }
+            }
+        }
+        _comment = Data[4];
+        _userName = Data[5];
+        _date = Data[6];
     }
 }

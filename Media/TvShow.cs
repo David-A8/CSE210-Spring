@@ -12,7 +12,7 @@ public class TvShow : Media
         base.NewMedia(MediaCode);
         Console.Write($"\nNumber of seasons: ");
         _seasons = int.Parse(Console.ReadLine() ?? string.Empty);
-        Console.WriteLine("\nTv show created successfully");
+        Console.WriteLine("New Tv Show added!!!");
     }
     public override string GetTxtInfo()
     {

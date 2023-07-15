@@ -39,6 +39,8 @@ public class MainMenu
                     mediaCode ++;
                     collection.AddResponse(int.Parse(respond),collection,Person,mediaCode);
                     break;
+                case "3":
+                    break;
             }
         response = "";
         }

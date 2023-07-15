@@ -10,6 +10,7 @@ public class Movie : Media
         base.NewMedia(MediaCode);
         Console.Write($"\nDirector: ");
         _director = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("New Movie added!!!");
     }
     public override string GetTxtInfo()
     {

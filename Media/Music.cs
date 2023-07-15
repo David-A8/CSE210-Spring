@@ -12,6 +12,7 @@ public class Music : Media
         _artist = Console.ReadLine() ?? string.Empty;
         Console.Write($"\nAlbum: ");
         _album = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("New Song added!!!");
     }
     public override string GetTxtInfo()
     {

@@ -91,7 +91,12 @@ public class Suggestion
         return _code;
     }
 
-    public void LoadingData(string[] Data)
+    public string GetUsername()
+    {
+        return _userName;
+    }
+
+    public void LoadingData(string[] Data,List<Response> Responses)
     {
         _type = Data[0];
         _genre = Data[1];
@@ -99,6 +104,12 @@ public class Suggestion
         _date = Data[3];
         _userName = Data[4];
         _code = int.Parse(Data[5]);
+        for (int i = 0; i < Responses.Count; i++)
+        {
+            if (Responses[i].GetCode() == _code){
+                _responses.Add(Responses[i]);
+            }
+        }
     }
 
 }
