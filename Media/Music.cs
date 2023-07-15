@@ -3,11 +3,11 @@ public class Music : Media
     string _artist = "";
     string _album = "";
 
-    public override void NewMedia()
+    public override void NewMedia(int MediaCode)
     {
         _type = "Music";
         Console.WriteLine("New Song");
-        base.NewMedia();
+        base.NewMedia(MediaCode);
         Console.Write($"\nArtist: ");
         _artist = Console.ReadLine() ?? string.Empty;
         Console.Write($"\nAlbum: ");
@@ -15,13 +15,13 @@ public class Music : Media
     }
     public override string GetTxtInfo()
     {
-        return "Music:/" + _title +":/" + _genre +":/" + _year +":/" + _calification +":/" + _numberRatings + ":/" + _artist +":/"+ _album;
+        return "Music:/"+_mediaCode+":/"+_title +":/" + _genre +":/" + _year +":/" + _calification +":/" + _numberRatings + ":/" + _artist +":/"+ _album;
     }
     public override void LoadingData(string[] Data)
     {
         base.LoadingData(Data);
-        _artist = Data[6];
-        _album = Data[7];
+        _artist = Data[7];
+        _album = Data[8];
     }
 
     public override void ShowInfo()

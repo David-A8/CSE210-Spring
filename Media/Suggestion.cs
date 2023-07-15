@@ -5,12 +5,13 @@ public class Suggestion
     string _description = "";
     string _date = "";
     string _userName = "";
-    List<Media> _responses = new List<Media>();
+    int _code = 0;
+    List<Response> _responses = new List<Response>();
 
     // Method to add the responses given by users to the responses list.
-    public void AddResponse(Media newMedia)
+    public void AddResponse(Response newResponse)
     {
-        _responses.Add(newMedia);
+        _responses.Add(newResponse);
     }
 
     public void ShowResponses()
@@ -18,12 +19,12 @@ public class Suggestion
         Console.WriteLine("\nResponses:");
         for (int i = 0; i < _responses.Count; i++)
             {
-                _responses[i].ShowInfo();
+                _responses[i].DisplayResponse();
                 Console.WriteLine($"----------------------------------------------------------------------\n");
             }
     }
 
-    public void NewSuggestion(User Person)
+    public void NewSuggestion(User Person, int Code)
     {
         Console.Clear();
         Boolean loop = true;
@@ -62,6 +63,7 @@ public class Suggestion
         _description = Console.ReadLine() ?? string.Empty;
         _date = todayDate.ToShortDateString();
         _userName = Person.GetName();
+        _code = Code;
         Console.WriteLine("\nNew request created successfully");
         Thread.Sleep(2500);
     }
@@ -76,12 +78,17 @@ public class Suggestion
 
     public string GetTxtInfo()
     {
-        return _type+":/"+_genre+":/"+ _description+":/"+_date+":/"+_userName;
+        return _type+":/"+_genre+":/"+ _description+":/"+_date+":/"+_userName+":/"+_code;
     }
 
     public string Type()
     {
         return _type;
+    }
+
+    public int GetCode()
+    {
+        return _code;
     }
 
     public void LoadingData(string[] Data)
@@ -91,6 +98,7 @@ public class Suggestion
         _description = Data[2];
         _date = Data[3];
         _userName = Data[4];
+        _code = int.Parse(Data[5]);
     }
 
 }
