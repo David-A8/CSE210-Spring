@@ -28,9 +28,11 @@ public class Collection
                     // Go through every suggestion made and display them.
                     _suggestions[i].Display();
                     _suggestions[i].ShowResponses();
-                    Console.WriteLine($"\n----------------------------------------------------------------------\n");
+                    Console.WriteLine($"\n*******************************************************************\n");
                 }
             }
+        Console.WriteLine("Press Enter to continue.");
+        Console.ReadLine();
     }
     public void AddSuggestionToList(Suggestion newItem)
     {

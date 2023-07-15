@@ -27,12 +27,14 @@ public class MainMenu
                     Environment.Exit(0);
                     break;
                 case "1":
+                    Person.AskedPlus();
                     Suggestion newSuggestion = new Suggestion();
                     codeCounter ++;
                     newSuggestion.NewSuggestion(Person, codeCounter);
                     collection.AddSuggestionToList(newSuggestion);
                     break;
                 case "2":
+                    Person.SuggestedPlus();
                     collection.DisplaySuggestions();
                     Console.Write($"\nType number of the suggestion you wanna respond to: ");
                     string respond = Console.ReadLine() ?? string.Empty;
@@ -40,6 +42,10 @@ public class MainMenu
                     collection.AddResponse(int.Parse(respond),collection,Person,mediaCode);
                     break;
                 case "3":
+                    collection.SuggestionFilter(Person.GetName());
+                    break;
+                case "4":
+
                     break;
             }
         response = "";

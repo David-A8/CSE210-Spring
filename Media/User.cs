@@ -76,8 +76,29 @@ public class User
             return false;
     }
 
+    public void DisplayProfile()
+    {
+        Console.Clear();
+        Console.WriteLine("Profile");
+        Console.WriteLine($"Name: {_name} {_lastName}");
+        Console.WriteLine($"Suggestions asked: {_timesAsked}");
+        Console.WriteLine($"Suggestions given: {_timesSuggested}");
+        Console.WriteLine("Press Enter to continue");
+        Console.ReadLine();
+    }
+
     public string GetName()
     {
         return _name + " " + _lastName;
+    }
+
+    public void AskedPlus()
+    {
+        _timesAsked ++;
+    }
+
+    public void SuggestedPlus()
+    {
+        _timesSuggested ++;
     }
 }
