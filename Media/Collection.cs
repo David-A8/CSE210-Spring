@@ -3,6 +3,7 @@
 public class Collection
 {
     List<Media> _media = new List<Media>();
+    List <User> _users = new List<User>();
     protected List<Suggestion> _suggestions = new List<Suggestion>();
     protected List<Response> _responses = new List<Response>();
 
@@ -21,6 +22,8 @@ public class Collection
 
     public void SuggestionFilter(string UserName)
     {
+        Console.Clear();
+        Console.WriteLine("Media suggested to me\n");
         for (int i = 0; i < _suggestions.Count; i++)
             {
                 // Verify if the suggestion was requested by user.
@@ -63,6 +66,7 @@ public class Collection
 
     public int LoadMedia()
     {
+        int currentCode = 1;
         string[] lines = System.IO.File.ReadAllLines("Media.txt");
         foreach (string line in lines)
         {
@@ -70,16 +74,20 @@ public class Collection
             if (parts[0] == "Music")
             {
                 _media.Add(new Music());
+                _media[_media.Count - 1].LoadingData(parts);
+                currentCode = _media[_media.Count-1].GetCode();
             }
             else if (parts[0] == "Movie"){
                 _media.Add(new Movie());
+                _media[_media.Count - 1].LoadingData(parts);
+                currentCode = _media[_media.Count-1].GetCode();
             }
             else if (parts[0] == "TvShow"){
                 _media.Add(new TvShow());
+                _media[_media.Count - 1].LoadingData(parts);
+                currentCode = _media[_media.Count-1].GetCode();
             }
-            _media[_media.Count - 1].LoadingData(parts);
         }
-        int currentCode = _media[_media.Count-1].GetCode();
         return currentCode;
     }
 
@@ -94,16 +102,28 @@ public class Collection
         }
         int currentCode = _suggestions[_suggestions.Count-1].GetCode();
     }
+
+    public void LoadUsers()
+    {
+        string[] lines = System.IO.File.ReadAllLines("Users.txt");
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(":/");
+            _users.Add(new User());
+            _users[_users.Count-1].LoadInfo(parts);
+        }
+    }
     public int LoadSuggestions()
     {
+        int currentCode = 1;
         string[] lines = System.IO.File.ReadAllLines("Suggestions.txt");
         foreach (string line in lines)
         {
             string[] parts = line.Split(":/");
             _suggestions.Add(new Suggestion());
             _suggestions[_suggestions.Count - 1].LoadingData(parts,_responses);
+            currentCode = _suggestions[_suggestions.Count-1].GetCode();
         }
-        int currentCode = _suggestions[_suggestions.Count-1].GetCode();
         return currentCode;
     }
     
@@ -136,6 +156,50 @@ public class Collection
             for (int i = 0; i < _responses.Count; i++)
             {
                 outputFile.WriteLine(_responses[i].GetTxtInfo());
+            }
+        }
+    }
+
+    public void SaveUsers()
+    {
+        using(StreamWriter outputFile = new StreamWriter("Users.txt"))
+        {
+            for (int i = 0; i < _users.Count; i++)
+            {
+                outputFile.WriteLine(_users[i].GetTxtInfo());
+            }
+        }
+    }
+
+    public void AddAskedPoint(string Name)
+    {
+        for(int i = 0; i < _users.Count; i++)
+        {
+            if (_users[i].GetName() == Name)
+            {
+                _users[i].AskedPlus();
+            }
+        }
+    }
+
+    public void AddSuggestedPoint(string Name)
+    {
+        for(int i = 0; i < _users.Count; i++)
+        {
+            if (_users[i].GetName() == Name)
+            {
+                _users[i].SuggestedPlus();
+            }
+        }
+    }
+
+    public void DisplayProfile(string Name)
+    {
+        for(int i = 0; i < _users.Count; i++)
+        {
+            if (_users[i].GetName() == Name)
+            {
+                _users[i].DisplayProfile();
             }
         }
     }

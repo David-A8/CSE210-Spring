@@ -12,6 +12,10 @@ public class TvShow : Media
         base.NewMedia(MediaCode);
         Console.Write($"\nNumber of seasons: ");
         _seasons = int.Parse(Console.ReadLine() ?? string.Empty);
+        Console.Write($"\nPlatform: ");
+        _platform = Console.ReadLine() ?? string.Empty;
+        Console.Write($"\nRate: ");
+        _rate = Console.ReadLine() ?? string.Empty;
         Console.WriteLine("New Tv Show added!!!");
     }
     public override string GetTxtInfo()
@@ -32,6 +36,5 @@ public class TvShow : Media
         Console.WriteLine($"Seasons: {_seasons}");
         Console.WriteLine($"Rate: {_rate}");
         Console.WriteLine($"Platform: {_platform}");
-        Console.WriteLine($"Calification: {_calification}");
     }
 }

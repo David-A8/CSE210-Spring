@@ -17,7 +17,7 @@ public class Response
         // First, the program will verify if the Media is already in the List of Media.
         Console.Write($"\nEnter details of {Type}\n\nEnter title: ");
         string Title = Console.ReadLine() ?? string.Empty;
-        Console.Write($"\nYear of release: ");
+        Console.Write($"Year of release: ");
         int Year = int.Parse(Console.ReadLine() ?? string.Empty);
         for (int i = 0; i < Media.Count; i++)
         {
@@ -34,7 +34,7 @@ public class Response
         }
         // If media is not found. A new object will be created.
         if (Found == false){
-            Console.WriteLine($"{Type} not found. Please enter the info to create a new entry.");
+            Console.WriteLine($"\n{Type} not found. Please enter the info to create a new entry.");
             if (Type == "Music"){
                 Music newItem = (new Music());
                 newItem.NewMedia(MediaCode);
@@ -60,8 +60,8 @@ public class Response
         _comment = Console.ReadLine() ?? string.Empty;
         _date = todayDate.ToShortDateString();
         _userName = Person.GetName();
-        Console.WriteLine("Thank you for your suggestion!!!");
-        Thread.Sleep(2500);
+        Console.WriteLine("\nThank you for your suggestion!!!");
+        Thread.Sleep(3000);
         Console.Clear();
     }
 

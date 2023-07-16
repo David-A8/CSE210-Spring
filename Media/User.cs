@@ -101,4 +101,19 @@ public class User
     {
         _timesSuggested ++;
     }
+
+    public string GetTxtInfo()
+    {
+       return ($"{_name}:/{_lastName}:/{_password}:/{_timesAsked}:/{_timesSuggested}:/{_category}");
+    }
+
+    public void LoadInfo(string[] Data)
+    {
+        _name = Data[0];
+        _lastName = Data[1];
+        _password = Data[2];
+        _timesAsked = int.Parse(Data[3]);
+        _timesSuggested = int.Parse(Data[4]);
+        _category = Data[5];
+    }
 }

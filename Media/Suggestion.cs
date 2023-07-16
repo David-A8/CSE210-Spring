@@ -28,10 +28,10 @@ public class Suggestion
     {
         Console.Clear();
         Boolean loop = true;
-        Console.WriteLine("Requesting a Suggestion\n");
+        Console.WriteLine("Ask for Suggestions\n");
         while (loop)
         {
-            Console.WriteLine("Pick a type of media: ");
+            Console.WriteLine("What kind of media do you want?: ");
             Console.Write($"\n1.   Music\n2.   Movie\n3.   TV Show\n\nType: ");
             string choice = Console.ReadLine() ?? string.Empty;
             if (choice == "1"){
