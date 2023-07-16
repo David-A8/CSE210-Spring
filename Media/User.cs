@@ -6,6 +6,7 @@ public class User
     int _timesAsked = 0;
     int _timesSuggested = 0;
     string _category = "";
+    List<string> _users = new List<string>();
 
     public void NewUser()
     {
@@ -34,9 +35,18 @@ public class User
             }
         }
 
+        string[] lines = System.IO.File.ReadAllLines("Users.txt");
+        foreach (string line in lines)
+        {
+            _users.Add(line);
+        }
+        _users.Add($"{_name}:/{_lastName}:/{_password}:/{_timesAsked}:/{_timesSuggested}:/{_category}");
         using(StreamWriter outputFile = new StreamWriter("Users.txt"))
         {
-            outputFile.WriteLine($"{_name}:/{_lastName}:/{_password}:/{_timesAsked}:/{_timesSuggested}:/{_category}");
+            for (int i=0; i<_users.Count; i++)
+            {
+                outputFile.WriteLine(_users[i]);
+            }
         }
         Console.Write($"\n\nUser created successfully!!!");
         Thread.Sleep(2500);
@@ -82,7 +92,7 @@ public class User
         Console.WriteLine("Profile");
         Console.WriteLine($"Name: {_name} {_lastName}");
         Console.WriteLine($"Suggestions asked: {_timesAsked}");
-        Console.WriteLine($"Suggestions given: {_timesSuggested}");
+        Console.WriteLine($"Suggestions given: {_timesSuggested}\n");
         Console.WriteLine("Press Enter to continue");
         Console.ReadLine();
     }

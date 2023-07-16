@@ -30,6 +30,5 @@ public class Music : Media
         base.ShowInfo();
         Console.WriteLine($"Artist: {_artist}");
         Console.WriteLine($"Album: {_album}");
-        Console.WriteLine($"Calification: {_calification}");
     }
 }

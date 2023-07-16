@@ -28,6 +28,5 @@ public class Movie : Media
         base.ShowInfo();
         Console.WriteLine($"Director: {_director}");
         Console.WriteLine($"Rate: {_rate}");
-        Console.WriteLine($"Calification: {_calification}");
     }
 }

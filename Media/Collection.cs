@@ -93,14 +93,16 @@ public class Collection
 
     public void LoadResponses()
     {
+        // Open the Responses file and separate line by line
         string[] lines = System.IO.File.ReadAllLines("Responses.txt");
         foreach (string line in lines)
         {
             string[] parts = line.Split(":/");
+            // Add a new response to the Responses list.
             _responses.Add(new Response());
+            // Load info from file to the object response.
             _responses[_responses.Count - 1].LoadingData(parts,_media);
         }
-        int currentCode = _suggestions[_suggestions.Count-1].GetCode();
     }
 
     public void LoadUsers()

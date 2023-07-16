@@ -3,10 +3,10 @@ public class MainMenu
     public void Display(User Person)
     {
         Collection collection = new Collection();
-        int mediaCode = collection.LoadMedia();
-        int codeCounter = collection.LoadSuggestions();
-        collection.LoadMedia();
         collection.LoadUsers();
+        int mediaCode = collection.LoadMedia();
+        collection.LoadResponses();
+        int codeCounter = collection.LoadSuggestions();
         string response = "";
         string[] options = {"1","2","3","4","5"};
         while (response!="5")
@@ -46,6 +46,7 @@ public class MainMenu
                     collection.AddSuggestedPoint(Person.GetName());
                     break;
                 case "3":
+                    Console.Clear();
                     collection.SuggestionFilter(Person.GetName());
                     break;
                 case "4":

@@ -1,7 +1,7 @@
 public class Response
 {
     int _code = 0;
-    Media? _media;
+    List <Media> _media = new List<Media>();
     string _comment = "";
     string _userName = "";
     string _date = "";
@@ -25,7 +25,7 @@ public class Response
                 if (Media[i].Title().ToUpper() == Title.ToUpper()){
                     // If media is found, it will be displayed.
                     if (Media[i].Year() == Year){
-                        _media = Media[i];
+                        _media.Add (Media[i]);
                         Media[i].ShowInfo();
                         Found = true;
                     }
@@ -34,24 +34,24 @@ public class Response
         }
         // If media is not found. A new object will be created.
         if (Found == false){
-            Console.WriteLine($"\n{Type} not found. Please enter the info to create a new entry.");
+            Console.WriteLine($"\n{Type} not found. Please enter the info to create a new entry.\n");
             if (Type == "Music"){
                 Music newItem = (new Music());
                 newItem.NewMedia(MediaCode);
                 Collection.AddMedia(newItem);
-                _media = newItem;
+                _media.Add (newItem);
             }
             else if (Type == "Movie"){
                 Movie newItem = (new Movie());
                 newItem.NewMedia(MediaCode);
                 Collection.AddMedia(newItem);
-                _media = newItem;
+                _media.Add (newItem);
             }
             else if(Type == "TvShow"){
                 TvShow newItem = (new TvShow());
                 newItem.NewMedia(MediaCode);
                 Collection.AddMedia(newItem);
-                _media = newItem;
+                _media.Add (newItem);
             }
         }
         //After the media was found or created. The rest of the fields for the suggestion are filled.
@@ -67,14 +67,14 @@ public class Response
 
     public void DisplayResponse()
     {
-        _media.ShowInfo();
+        _media[0].ShowInfo();
         Console.WriteLine($"Comment: {_comment}");
         Console.WriteLine(_userName +" - " + _date);
     }
 
     public string GetTxtInfo()
     {
-        return _code+":/"+_media.Type()+":/"+ _media.Title()+":/"+_media.Year()+":/"+_comment+":/"+_userName+":/"+_date;
+        return _code+":/"+_media[0].Type()+":/"+ _media[0].Title()+":/"+_media[0].Year()+":/"+_comment+":/"+_userName+":/"+_date;
     }
 
     public int GetCode()
@@ -89,9 +89,9 @@ public class Response
         {
             if (Media[i].Type() == Data[1]){
                 if (Media[i].Title().ToUpper() == Data[2].ToUpper()){
-                    // If media is found, it will be displayed.
+                    // If media is found, it will be saved in the response.
                     if (Media[i].Year() == int.Parse(Data[3])){
-                        _media = Media[i];
+                        _media.Add (Media[i]);
                     }
                 }
             }
